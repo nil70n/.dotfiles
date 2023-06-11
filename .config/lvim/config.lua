@@ -7,7 +7,7 @@
 -- Keybindings overview: https://www.lunarvim.org/docs/beginners-guide/keybinds-overview
 
 vim.opt.relativenumber = true
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.api.nvim_set_keymap('n', '<leader>pv', '<CMD>:Ex<CR>', { noremap = true, silent = true })
 
 lvim.transparent_window = true
 lvim.colorscheme = 'rose-pine-main'
