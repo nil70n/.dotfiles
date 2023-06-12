@@ -42,6 +42,12 @@ lvim.plugins = {
   { 'tpope/vim-dadbod' },
   { 'kristijanhusak/vim-dadbod-ui' },
   { 'nvim-treesitter/playground' },
+  {
+    "simrat39/symbols-outline.nvim",
+    cmd = "SymbolsOutline",
+    keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
+    config = true,
+  },
   { 'theprimeagen/harpoon', enabled = false
     -- opts = function(_, opts)
     --   local mark = require("harpoon.mark")
