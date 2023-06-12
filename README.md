@@ -10,3 +10,6 @@ My intention is to add only Linux config files here, but take into consideration
 Here's how LunarVim looks like with my current setup:
 
 ![LunarVim screenshot](/assets/screenshot.png)
+
+I'm using WSL in Windows Terminal. The colorscheme is [Rose-Pine](https://github.com/rose-pine/windows-terminal)
+
