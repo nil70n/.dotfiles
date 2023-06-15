@@ -1,0 +1,5 @@
+#Personal Config files
+
+*.tool-versions
+*.vscode/extensions.json
+*.vscode/settings.json

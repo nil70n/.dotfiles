@@ -12,11 +12,19 @@ source /opt/asdf-vm/asdf.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Local and Cargo paths
 export PATH=$HOME/.local/bin:$HOME/.cargo/bin:$PATH
+
+# Go paths
+export PATH=$(go env GOBIN):$(go env GOPATH)/bin:$PATH
+
+# Dotnet paths (through asdf)
+export DOTNET_MSBUILD_SDK_RESOLVER_SDKS_DIR=$(echo $HOME/.asdf/shims/dotnet)
+export DOTNET_MSBUILD_SDK_RESOLVER_SDKS_VER=(echo $($DOTNET_MSBUILD_SDK_RESOLVER_SDKS_DIR --version))
+export DOTNET_MSBUILD_SDK_RESOLVER_CLI_DIR=$(echo $HOME/.asdf/shims/dotnet)
 
 alias vim="lvim"
 alias bat="bat --style=auto"
 
 alias ls="exa --icons"
-alias ll='exa --icons -alF'
 
