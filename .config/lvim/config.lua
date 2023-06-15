@@ -7,19 +7,19 @@
 -- Keybindings overview: https://www.lunarvim.org/docs/beginners-guide/keybinds-overview
 
 vim.opt.relativenumber = true
-vim.api.nvim_set_keymap('n', '<leader>pv', '<CMD>:Ex<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>pv', '<CMD>:Ex<CR>', { noremap = true, silent = true })
 
 lvim.transparent_window = true
 lvim.colorscheme = 'rose-pine-main'
 
 lvim.plugins = {
   { 'rose-pine/neovim', name = 'rose-pine' },
-  {
-    "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
-    opts = {},
-  },
+  -- {
+  --   "kylechui/nvim-surround",
+  --   version = "*", -- Use for stability; omit to use `main` branch for the latest features
+  --   event = "VeryLazy",
+  --   opts = {},
+  -- },
   {
     'Wansmer/treesj',
     keys = {
@@ -38,16 +38,16 @@ lvim.plugins = {
       vim.api.nvim_set_keymap("n", "s", ":HopWord<cr>", { silent = true })
     end,
   },
-  { 'tpope/vim-dadbod' },
-  { 'kristijanhusak/vim-dadbod-ui' },
-  { 'nvim-treesitter/playground' },
+  -- { 'tpope/vim-dadbod' },
+  -- { 'kristijanhusak/vim-dadbod-ui' },
+  -- { 'nvim-treesitter/playground' },
   {
     "simrat39/symbols-outline.nvim",
     cmd = "SymbolsOutline",
     keys = { { "<leader>.s", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
     config = true,
   },
-  { 'theprimeagen/harpoon', enabled = false
+  -- { 'theprimeagen/harpoon', enabled = false
     -- opts = function(_, opts)
     --   local mark = require("harpoon.mark")
     --   local ui = require("harpoon.ui")
@@ -68,7 +68,7 @@ lvim.plugins = {
     --   vim.api.nvim_set_keymap("n", "<S-f>", function() tmux.sendCommand(4, "pwd") end)
     --   vim.api.nvim_set_keymap("n", "<S-g>", function() tmux.sendCommand(5, "pwd") end)
     -- end,
-  },
-  { 'tpope/vim-fugitive', enabled = false },
+  -- },
+  -- { 'tpope/vim-fugitive', enabled = false },
 }
 
