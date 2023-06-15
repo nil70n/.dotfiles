@@ -12,11 +12,10 @@ source /opt/asdf-vm/asdf.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export PATH=$HOME/.local/bin:$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/.cargo/bin:$(go env GOBIN):$(go env GOPATH)/bin:$PATH
 
 alias vim="lvim"
 alias bat="bat --style=auto"
 
 alias ls="exa --icons"
-alias ll='exa --icons -alF'
 
