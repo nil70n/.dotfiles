@@ -3,3 +3,10 @@
 *.tool-versions
 *.vscode/extensions.json
 *.vscode/settings.json
+*.vscode/dev.env
+*.vscode/uat.env
+
+# For KeHe projects
+*MySqsHelper.cs
+*MyHelper.cs
+*MyController.cs

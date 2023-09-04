@@ -12,19 +12,45 @@ source /opt/asdf-vm/asdf.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Local and Cargo paths
-export PATH=$HOME/.local/bin:$HOME/.cargo/bin:$PATH
+## PATH
+#********************************
+### Local
+export PATH=$HOME/.local/bin:$PATH
+### Cargo
+export PATH=$HOME/.cargo/bin:$PATH
+### Go
+#export PATH=$(go env GOBIN):$(go env GOPATH)/bin:$PATH
+### .NET
+export PATH=$HOME/.dotnet/tools:$PATH
+export PATH=$HOME/.dotnet:$PATH
+### AWS X-Ray
+export PATH=$HOME/xray-daemon:$PATH
+### Homebrew
+export PATH=$HOME/linuxbrew/.linuxbrew/bin/brew:$PATH
 
-# Go paths
-export PATH=$(go env GOBIN):$(go env GOPATH)/bin:$PATH
+## Custom Commands
+#********************************
+### SSH
+ssh-start() {
+  eval `ssh-agent`
+  ssh-add ~/.ssh/id_ed25519_sign
+}
 
-# Dotnet paths (through asdf)
-export DOTNET_MSBUILD_SDK_RESOLVER_SDKS_DIR=$(echo $HOME/.asdf/shims/dotnet)
-export DOTNET_MSBUILD_SDK_RESOLVER_SDKS_VER=(echo $($DOTNET_MSBUILD_SDK_RESOLVER_SDKS_DIR --version))
-export DOTNET_MSBUILD_SDK_RESOLVER_CLI_DIR=$(echo $HOME/.asdf/shims/dotnet)
+ssh-stop() {
+  kill $SSH_AGENT_PID
+}
 
-alias vim="lvim"
-alias bat="bat --style=auto"
-
+## Aliases
+#********************************
+alias vim="nvim"
+alias cat="bat --style=auto"
 alias ls="exa --icons"
+alias yank="xclip -sel clip"
 
+## Environment Variables
+#********************************
+### System
+### Development
+export DOTNET_ROOT=$HOME/.dotnet
+# export AWS_DEFAULT_PROFILE=Prod
+# export AWS_PROFILE=Prod
