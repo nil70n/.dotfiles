@@ -1,0 +1,35 @@
+return {
+  --   {
+  --     "nvim-treesitter/nvim-treesitter",
+  --     opts = function(_, opts)
+  --   if type(opts.ensure_installed) == "table" then
+  --     require("lspconfig.util").list_insert_unique(opts.ensure_installed, "c_sharp")
+  --   end
+  --     end,
+  --   },
+  --   {
+  --     "neovim/nvim-lspconfig",
+  --     opts = {
+  --       servers = {
+  --         omnisharp = {
+  --           handlers = {
+  --             ["textDocument/definition"] = require("omnisharp-extended").handler,
+  --           },
+  --           cmd = {
+  --             "/home/nilton/.local/share/nvim/mason/bin/omnisharp",
+  --             "--languageserver",
+  --             "--hostPID",
+  --             tostring(vim.fn.getpid()),
+  --           },
+  --           root_dir = require("lspconfig.util").root_pattern("cwd", ".sln"),
+  --           settings = {
+  --             ["omnisharp"] = {
+  --               enableDecompilationSupport = true,
+  --               enableGoToDefinitionSupport = true,
+  --             },
+  --           },
+  --         },
+  --       },
+  --     },
+  --   },
+}
