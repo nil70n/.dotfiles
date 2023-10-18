@@ -1,4 +1,4 @@
-local null_ls = require("null_ls")
+local null_ls = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local opts = {
@@ -7,7 +7,9 @@ local opts = {
     null_ls.builtins.formatting.goimports_reviser,
     null_ls.builtins.formatting.golines,
     null_ls.builtins.diagnostics.eslint,
-    null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.prettier.with({
+      extra_filetypes = { "astro" },
+    }),
   },
   on_attach = function(client, bufnr)
     if client.supports_method("testDocument/formatting") then

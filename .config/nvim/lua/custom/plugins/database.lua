@@ -9,7 +9,10 @@ local plugins = {
     "kristijanhusak/vim-dadbod-ui",
     lazy = false,
   },
-  { "kristijanhusak/vim-dadbod-completion" },
+  {
+    "kristijanhusak/vim-dadbod-completion",
+    lazy = false,
+  },
 }
 
 return plugins

@@ -54,3 +54,22 @@ alias yank="xclip -sel clip"
 export DOTNET_ROOT=$HOME/.dotnet
 # export AWS_DEFAULT_PROFILE=Prod
 # export AWS_PROFILE=Prod
+
+# bun completions
+[ -s "/home/nilton/.bun/_bun" ] && source "/home/nilton/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/home/nilton/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# Laravel
+export PATH=$HOME/.config/composer/vendor/bin:$PATH
+

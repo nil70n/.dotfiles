@@ -1,8 +1,36 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
-
 local lspconfig = require("lspconfig")
 local util = require "lspconfig/util"
+local servers = {
+  "gopls",
+  "sqlls",
+  "eslint",
+  "tsserver",
+  "svelte",
+  "tailwindcss",
+  "omnisharp",
+  "html",
+  "astro",
+  "intelephense",
+};
+
+local M = {}
+-- cmp has complementary completion capabilities
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
+-- Mason
+require("mason").setup()
+require("mason-lspconfig").setup {
+  ensure_installed = servers,
+}
+
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+end
 
 lspconfig.gopls.setup {
   on_attach = on_attach,
@@ -21,28 +49,6 @@ lspconfig.gopls.setup {
   }
 }
 
-lspconfig.omnisharp.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { "cs", "vb", "sln", "csproj" },
-  root_dir = util.root_pattern("cwd", ".sln"),
-  handlers = {
-    ["textDocument/definition"] = require("omnisharp_extended").handler,
-  },
-  cmd = {
-    "/home/nilton/.local/share/nvim/mason/bin/omnisharp",
-    "--languageserver",
-    "--hostPID",
-    tostring(vim.fn.getpid()),
-  },
-  settings = {
-    ["omnisharp"] = {
-      enableDecompilationSupport = true,
-      enableGoToDefinitionSupport = true,
-    },
-  },
-}
-
 local function organize_imports()
   local params = {
     command = "_typescript.organizeImports",
@@ -53,7 +59,9 @@ local function organize_imports()
 end
 
 lspconfig.tsserver.setup {
-  on_attach = on_attach,
+  on_attach = function (client)
+    client.resolved_capabilities.document_formatting = false
+  end,
   capabilities = capabilities,
   init_options = {
     preferences = {
@@ -65,5 +73,22 @@ lspconfig.tsserver.setup {
       organize_imports,
       description = "Organize Imports"
     }
-  }
+  },
+  settings = {
+    completions = {
+      completeFunctionCalls = true
+    }
+  },
 }
+
+lspconfig.astro.setup = {
+  cmd = { "astro-ls", "--stdio" },
+  filetypes = { "astro" },
+  init_options = { "typescript" },
+  root_dir = util.root_pattern("astro.config.mjs", "tsconfig.json", "package.json")
+}
+
+M.on_attach = on_attach
+M.capabilities = capabilities
+
+return M

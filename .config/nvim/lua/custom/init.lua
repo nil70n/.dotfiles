@@ -34,3 +34,25 @@ vim.cmd("set showtabline=0")
 
 -- Disable persistent undo
 vim.opt.undofile = false
+
+vim.filetype.add({
+    extension = {
+        astro = "astro"
+    }
+})
+
+vim.filetype.add({
+	extension = {
+		mdx = "markdown.mdx",
+	},
+	filename = {},
+	pattern = {},
+})
+
+g.user_emmet_leader_key='<F6>'
+
+vim.keymap.set('', '<Tab>', '<Nop>', { noremap=true, silent=true });
+vim.keymap.set('', '<S-Tab>', '<Nop>', { noremap=true, silent=true });
+vim.keymap.set('', '<C-p>', '<Nop>', { noremap=true, silent=true });
+vim.keymap.set('', '<C-n>', '<Nop>', { noremap=true, silent=true });
+-- vim.keymap.set('', '<CR>', '<Nop>', { noremap=true, silent=true });

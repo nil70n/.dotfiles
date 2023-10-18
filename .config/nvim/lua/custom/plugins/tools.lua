@@ -47,6 +47,26 @@ local plugins = {
       }
     end,
   },
+  {
+    "rcarriga/nvim-notify",
+    lazy = false,
+  },
+  {
+    "MunifTanjim/nui.nvim",
+    lazy = false,
+  },
+  {
+    "mattn/emmet-vim",
+    lazy = false,
+  },
+  {
+    "AndrewRadev/tagalong.vim",
+    lazy = false,
+  },
+  {
+    "alvan/vim-closetag",
+    lazy = false,
+  },
 }
 
 return plugins

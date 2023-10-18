@@ -10,8 +10,11 @@ local plugins = {
     lazy = false,
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
     config = function()
+      local config = require("custom.configs.telescope");
+      config.load_options();
+
       require("telescope").load_extension("file_browser")
-    end
+   end
   },
 }
 

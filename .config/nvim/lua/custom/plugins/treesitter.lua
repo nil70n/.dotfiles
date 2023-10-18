@@ -1,9 +1,24 @@
 -- Treesitter
 
 local plugins = {
-  { "nvim-treesitter/nvim-treesitter" },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    opts = {
+    ensure_installed = {
+      'astro',
+      'typescript',
+      'html',
+      'css',
+      'c_sharp',
+    },
+    auto_install = true,
+    highlight = { enable = true }
+    }
+  },
   {
     "nvim-treesitter/nvim-treesitter-context",
+    lazy = false,
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
       enable = true,
@@ -16,6 +31,7 @@ local plugins = {
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    lazy = false,
     dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
 }

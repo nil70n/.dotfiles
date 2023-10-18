@@ -29,15 +29,7 @@ local plugins = {
     init = function ()
       require("custom.configs.dap")
       require("core.utils").load_mappings("dap")
-    end
-  },
-  {
-    "leoluz/nvim-dap-go",--   "dreamsofcode-io/nvim-dap-go",
-    ft = "go",
-    dependencies = "mfussenegger/nvim-dap",
-    config = function (_, opts)
-      require("dap-go").setup(opts)
-      require("core.utils").load_mappings("dap_go")
+      require("dap.ext.vscode").load_launchjs()
     end
   },
 }

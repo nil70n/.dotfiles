@@ -10,12 +10,6 @@ M.overrides = {
       "<cmd> Telescope buffers <cr>",
       "Telescope Buffers"
     },
-    -- ["<leader>bd"] = {
-    --   function ()
-    --    require("custom.configs.telescope").close_buffer()
-    --   end,
-    --   "Telescope Close Selected Buffer"
-    -- },
   }
 }
 
@@ -24,6 +18,49 @@ M.toggle = {
     ["<leader>td"] = {
       "<cmd> DBUIToggle <cr>",
       "Toggle DB UI"
+    },
+  }
+}
+
+M.cmp = {
+  plugin = true,
+  n = {
+    ["<C-j"] = {
+      function ()
+        local cmp = require "cmp"
+        cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_next_item()
+          elseif require("luasnip").expand_or_jumpable() then
+            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+          else
+            fallback()
+          end
+        end, { "i", "s" })
+      end,
+      "Select next completion item"
+    },
+    ["<C-k"] = {
+      function ()
+        local cmp = require "cmp"
+        cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item()
+          elseif require("luasnip").jumpable(-1) then
+            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+          else
+            fallback()
+          end
+        end, { "i", "s" })
+      end,
+      "Select next completion item"
+    },
+    ['<C-y>'] = {
+      function ()
+        local cmp = require "cmp"
+        cmp.mapping.confirm({ select = true })
+      end,
+      "Select the completion item"
     },
   }
 }
